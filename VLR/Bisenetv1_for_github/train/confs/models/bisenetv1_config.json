@@ -1,0 +1,5 @@
+{
+    "type_model": "bisenetv1",
+    "n_cats": 2,
+    "num_aux_heads": 4
+}

@@ -1,0 +1,28 @@
+name: bisenetv2
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+    - gdown==4.7.1
+    - matplotlib
+    - numpy
+    - nvidia-cublas-cu11==11.10.3.66
+    - nvidia-cuda-nvrtc-cu11==11.7.99
+    - nvidia-cuda-runtime-cu11==11.7.99
+    - nvidia-cudnn-cu11==8.5.0.96
+    - nvidia-pyindex==1.0.9
+    - opencv-python==4.7.0.72
+    - Pillow==9.3.0
+    - pip-tools==6.13.0
+    - tensorboard-data-server==0.7.0
+    - tensorboard==2.13.0
+    - timm==0.6.13
+    - torch==1.13.1
+    - torchaudio
+    - torchmetrics==0.8.0
+    - torchvision==0.14.1
+    - tqdm==4.57.0

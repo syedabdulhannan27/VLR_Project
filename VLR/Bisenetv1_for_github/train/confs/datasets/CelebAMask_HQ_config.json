@@ -1,0 +1,6 @@
+{
+    "type_dataset": "CelebAMask_HQ",
+    "mask_path": "/data/ishan/Face_Segmentation/CelebAMask-HQ/standardized_masks",
+    "img_path": "/data/ishan/Face_Segmentation/CelebAMask-HQ/images",
+    "gamma_scheduler":0.95
+}

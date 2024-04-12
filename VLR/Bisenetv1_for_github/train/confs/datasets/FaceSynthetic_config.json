@@ -1,0 +1,6 @@
+{
+    "type_dataset": "FaceSynthetic",
+    "mask_path": "/data/ishan/Face_Segmentation/FaceSynthetic/standardized_masks",
+    "img_path": "/data/ishan/Face_Segmentation/FaceSynthetic/images",
+    "gamma_scheduler":0.86
+}
