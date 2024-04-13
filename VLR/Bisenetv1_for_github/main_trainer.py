@@ -2,7 +2,7 @@ import torch
 import train.confs.config_factory as c_f
 from train_terminal import train_run
 
-project_root = '/home/syeda/VLR/Bisenetv1_for_github'
+project_root = '/home/syeda/VLR_Project/VLR/Bisenetv1_for_github'
 type_dataset = 'P3M'    # CelebAMask_HQ | FaceSynthetic
 type_model = 'bisenetv1'  # bisenetv1 unet
 type_task = 'segmentation'

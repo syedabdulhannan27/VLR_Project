@@ -1,6 +1,6 @@
 {
     "type_dataset": "P3M",
-    "mask_path": "/home/syeda/VLR/testVLR/masks",
-    "img_path": "/home/syeda/VLR/testVLR/images",
+    "mask_path": "/home/syeda/VLR_Project/VLR/testVLR/masks",
+    "img_path": "/home/syeda/VLR_Project/VLR/testVLR/images",
     "gamma_scheduler":0.975
 }

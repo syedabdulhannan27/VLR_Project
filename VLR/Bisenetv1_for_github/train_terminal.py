@@ -174,7 +174,7 @@ class CustomDataloader(torch.utils.data.DataLoader): # Inherit from torch.utils.
 
 
         # Each image gets split into sub images to form one training batch
-        self.num_batches =  len(os.listdir(self.og_img_files))    
+        self.num_batches =  len(os.listdir(self.patch_folder))    
 
     def __len__(self):
         # What output do you get when you print len(loader)? You get the number of batches
@@ -205,7 +205,7 @@ class CustomDataloader(torch.utils.data.DataLoader): # Inherit from torch.utils.
             for i in range(len(img_patches)):
                 img = mpimg.imread(img_patches[i])
                 mask = mpimg.imread(mask_patches[i])
-                print(img_patches[i])
+                # print(img_patches[i])
 
             
                 if not self.augmentation:
@@ -254,8 +254,8 @@ def train_run(general_dict):
     #     )
 
     path_dict = {
-    "og_img_files" : '/home/syeda/VLR/testVLR/images',
-    "patch_folder" : '/home/syeda/VLR/testVLR/patch_folder',
+    "og_img_files" : '/home/syeda/VLR_Project/VLR/testVLR/images',
+    "patch_folder" : '/home/syeda/VLR_Project/VLR/testVLR/patch_folder',
     }
 
     dataloader = CustomDataloader(path_dict=path_dict, batch_size=16, shuffle=False, augmentation=True)
