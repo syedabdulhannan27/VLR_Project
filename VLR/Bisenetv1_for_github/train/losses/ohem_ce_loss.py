@@ -16,7 +16,7 @@ class OhemCELoss(nn.Module):
         self.thresh = -torch.log(torch.tensor(self.loss_dict['loss_thresh'],
                                               dtype=torch.float)).cuda(device_num)
         # self.n_min = self.loss_dict['n_img_per_gpu'] * self.loss_dict['cropsize'][0] * self.loss_dict['cropsize'][1]//24
-        self.n_min = 16000
+        self.n_min = 16000//8
         self.ignore_lb = self.loss_dict['ignore_lb']
         self.criteria = nn.CrossEntropyLoss(
             ignore_index=self.loss_dict['ignore_lb'],

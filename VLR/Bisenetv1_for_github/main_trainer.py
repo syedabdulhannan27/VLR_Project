@@ -11,7 +11,7 @@ type_scheduler = 'ExponentialLR'
 type_saver = 'standard_seg'
 load_from_snapshot = False
 resume_path = '/home/ishan/Bisenetv1_for_github/res/terminal_test/Unet_1.pth'
-tb_name = 'bisenet_no_init' # Unet_2
+tb_name = 'please_work_1' # Unet_2
 
 device_num = 0
 cfg_dict = dict(

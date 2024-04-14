@@ -160,16 +160,16 @@ class CustomDataloader(torch.utils.data.DataLoader): # Inherit from torch.utils.
             ])
         self.trans_train_main = c_transforms.Compose([
             # c_transforms.HorizontalFlip(),
-            # c_transforms.RandomRotate(degrees=(-15,15)),
+            c_transforms.RandomRotate(degrees=(-15,15)),
             # c_transforms.RandomScale((0.75, 1.0, 1.25, 1.5, 1.75, 2.0)),
             # c_transforms.RandomCrop(cropsize)
             ])
         self.trans_train_colors = transforms.Compose([
             transforms.ColorJitter(
-                brightness=0.3,
-                contrast=0.3,
-                saturation=0.3),
-            transforms.RandomGrayscale(p=0.2),
+                brightness=0.1,
+                contrast=0.1,
+                saturation=0.1),
+            # transforms.RandomGrayscale(p=0.2),
                 ])
 
 
