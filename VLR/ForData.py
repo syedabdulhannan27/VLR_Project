@@ -8,6 +8,7 @@ import json
 import cv2
 import math
 from tqdm import tqdm
+import torch
 
 
 class YOLOv8_face:
