@@ -159,7 +159,7 @@ class CustomDataloader(torch.utils.data.DataLoader): # Inherit from torch.utils.
             # transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
             ])
         self.trans_train_main = c_transforms.Compose([
-            # c_transforms.HorizontalFlip(),
+            c_transforms.HorizontalFlip(),
             c_transforms.RandomRotate(degrees=(-15,15)),
             # c_transforms.RandomScale((0.75, 1.0, 1.25, 1.5, 1.75, 2.0)),
             # c_transforms.RandomCrop(cropsize)
@@ -254,8 +254,8 @@ def train_run(general_dict):
     #     )
 
     path_dict = {
-    "og_img_files" : '/home/syeda/VLR_Project/VLR/testVLR/images',
-    "patch_folder" : '/home/syeda/VLR_Project/VLR/testVLR/patch_folder',
+    "og_img_files" : '/home/ishan/datasets/celeba/images',
+    "patch_folder" : '/home/ishan/datasets/celeba/patch_folder',
     }
 
     dataloader = CustomDataloader(path_dict=path_dict, batch_size=16, shuffle=False, augmentation=True)

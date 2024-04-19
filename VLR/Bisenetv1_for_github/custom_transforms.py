@@ -10,7 +10,7 @@ from PIL import Image
 import cv2
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
-import datasets.custom_transforms as c_transforms
+import train.datasets.custom_transforms as c_transforms
 
 
 class RandomCrop(object):

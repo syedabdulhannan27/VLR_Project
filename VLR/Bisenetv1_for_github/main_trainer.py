@@ -2,7 +2,7 @@ import torch
 import train.confs.config_factory as c_f
 from train_terminal import train_run
 
-project_root = '/home/syeda/VLR_Project/VLR/Bisenetv1_for_github'
+project_root = '/home/ishan/projects/patch_seg/VLR_Project/VLR/Bisenetv1_for_github'
 type_dataset = 'P3M'    # CelebAMask_HQ | FaceSynthetic
 type_model = 'bisenetv1'  # bisenetv1 unet
 type_task = 'segmentation'
@@ -11,7 +11,7 @@ type_scheduler = 'ExponentialLR'
 type_saver = 'standard_seg'
 load_from_snapshot = False
 resume_path = '/home/ishan/Bisenetv1_for_github/res/terminal_test/Unet_1.pth'
-tb_name = 'please_work_1' # Unet_2
+tb_name = 'bisenet_celeb_a_2' # Unet_2
 
 device_num = 0
 cfg_dict = dict(
