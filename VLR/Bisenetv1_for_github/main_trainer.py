@@ -11,9 +11,9 @@ type_scheduler = 'ExponentialLR'
 type_saver = 'standard_seg'
 load_from_snapshot = False
 resume_path = '/home/ishan/Bisenetv1_for_github/res/terminal_test/Unet_1.pth'
-tb_name = 'bisenet_celeb_a_2' # Unet_2
+tb_name = 'bisenet_celeb_a_4' # Unet_2
 
-device_num = 0
+device_num = 5
 cfg_dict = dict(
     type_model=type_model,
     type_dataset=type_dataset,

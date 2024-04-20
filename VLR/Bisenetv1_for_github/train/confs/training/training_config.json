@@ -1,14 +1,14 @@
 {
-    "num_epochs": 15,
+    "num_epochs": 100,
     "learning_rate":1e-3,
     "weight_decay": 1e-5,
     "gamma_scheduler":0.975,
     "n_img_per_gpu": 1,
     "eval_ims_per_gpu": 1,
     "print_gap_batches": 100,
-    "save_every": 2,
+    "save_every": 5,
     "loss_thresh": 0.7,
     "cropsize": [512, 512],
     "ignore_lb": -100,
-    "device_num": 0
+    "device_num": 5
   }
