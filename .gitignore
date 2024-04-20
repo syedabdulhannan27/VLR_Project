@@ -168,4 +168,6 @@ VLR/testVLR/
 VLR/Bisenetv1_for_github/res/
 VLR/og_dataset.zip
 VLR/inference_media/
+VLR/CelebAMask-HQ.zip
+VLR/std_masks.zip
 
