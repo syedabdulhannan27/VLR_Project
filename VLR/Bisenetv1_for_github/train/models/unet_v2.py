@@ -9,7 +9,7 @@ device_num = 6
 
 class UNet_v2(nn.Module):
 
-    def __init__(self, n_classes=2, mode='train',in_channels=3, init_features=32):
+    def __init__(self, n_classes=2, mode='train',in_channels=3, init_features=24):
         super(UNet_v2, self).__init__()
         
         # self.conf = conf
@@ -19,8 +19,8 @@ class UNet_v2(nn.Module):
 
         self.encoder1 = UNet_v2._block(in_channels, features, name="enc1")
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.encoder2 = UNet_v2._block(features, features * 2, name="enc2",dilation=2)
-        # self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.encoder2 = UNet_v2._block(features, features * 2, name="enc2")
+        self.pool2 = nn.MaxPool2d(kernel_size=1, stride=1)
         self.encoder3 = UNet_v2._block(features * 2, features * 4, name="enc3", dilation=4)
         # self.pool3 = nn.MaxPool2d(kernel_size=2, stride=2)
         self.encoder4 = UNet_v2._block(features * 4, features * 8, name="enc4", dilation=8)
@@ -74,10 +74,10 @@ class UNet_v2(nn.Module):
 
             enc1 = self.encoder1(x)
             enc2 = self.encoder2(self.pool1(enc1))
-            # enc3 = self.encoder3(self.pool2(enc2))
+            enc3 = self.encoder3(self.pool2(enc2))
             # enc4 = self.encoder4(self.pool3(enc3))
             # enc2 = self.encoder2(enc1)
-            enc3 = self.encoder3(enc2)
+            # enc3 = self.encoder3(enc2)
             enc4 = self.encoder4(enc3)
 
             bottleneck = self.bottleneck(self.pool4(enc4))
@@ -134,32 +134,53 @@ class UNet_v2(nn.Module):
             x = data_dict['img'].cuda(device_num)
             H, W = x.size()[2:]
 
+            # enc1 = self.encoder1(x)
+            # enc2 = self.encoder2(self.pool1(enc1))
+            # # enc3 = self.encoder3(self.pool2(enc2))
+            # # enc4 = self.encoder4(self.pool3(enc3))
+            # # enc2 = self.encoder2(enc1)
+            # enc3 = self.encoder3(enc2)
+            # enc4 = self.encoder4(enc3)
+
+            # # bottleneck = self.bottleneck(self.pool4(enc4))
+            # bottleneck = self.bottleneck(enc4)
+
+            # # dec4 = self.upconv4(bottleneck)
+            # dec4 = torch.cat((dec4, enc4), dim=1)
+            # dec4 = self.decoder4(dec4)
+            # # dec3 = self.upconv3(dec4)
+            # dec3 = torch.cat((dec3, enc3), dim=1)
+            # dec3 = self.decoder3(dec3)
+            # # dec2 = self.upconv2(dec3)
+            # dec2 = torch.cat((dec2, enc2), dim=1)
+            # dec2 = self.decoder2(dec2)
+            # dec1 = self.upconv1(dec2)
+            # dec1 = torch.cat((dec1, enc1), dim=1)
+            # dec1 = self.decoder1(dec1)
+
+            # feat_out = self.conv(dec1)
+            # feat_out_single_channel = feat_out.argmax(1)
+
             enc1 = self.encoder1(x)
             enc2 = self.encoder2(self.pool1(enc1))
-            # enc3 = self.encoder3(self.pool2(enc2))
-            # enc4 = self.encoder4(self.pool3(enc3))
-            # enc2 = self.encoder2(enc1)
-            enc3 = self.encoder3(enc2)
-            enc4 = self.encoder4(enc3)
-
-            # bottleneck = self.bottleneck(self.pool4(enc4))
-            bottleneck = self.bottleneck(enc4)
-
-            # dec4 = self.upconv4(bottleneck)
+            enc3 = self.encoder3(self.pool2(enc2))
+            enc4 = self.encoder4((enc3))
+            bottleneck = self.bottleneck(self.pool4(enc4))
+            dec4 = self.upconv4(bottleneck)
             dec4 = torch.cat((dec4, enc4), dim=1)
             dec4 = self.decoder4(dec4)
-            # dec3 = self.upconv3(dec4)
+            dec3 = self.upconv3(dec4)
             dec3 = torch.cat((dec3, enc3), dim=1)
             dec3 = self.decoder3(dec3)
-            # dec2 = self.upconv2(dec3)
+            dec2 = self.upconv2(dec3)
             dec2 = torch.cat((dec2, enc2), dim=1)
             dec2 = self.decoder2(dec2)
             dec1 = self.upconv1(dec2)
             dec1 = torch.cat((dec1, enc1), dim=1)
             dec1 = self.decoder1(dec1)
-
             feat_out = self.conv(dec1)
             feat_out_single_channel = feat_out.argmax(1)
+
             '''
             "feat_out.argmax(1)" is taking the biggest value in each pixel across all the different labels
             and chooses that label as the argument.
